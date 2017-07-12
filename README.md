@@ -1,15 +1,12 @@
 # Awesome Hyperparams
 
-### Abbreviations
-* lr: learning rate 
-
 ## Contributors 
 
 Please provide citations (e.g., arxiv link, blog post, github repo, etc). Any info on the hyperparameter search process taken in the original work (if available) is a bonus.
 
 Example contribution: 
 
-#### Original DQN
+### Original DQN
 
 * [paper](https://arxiv.org/pdf/1312.5602.pdf)
 * [original Torch code](https://github.com/kuz/DeepMind-Atari-Deep-Q-Learner/blob/master/run_gpu)
