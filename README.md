@@ -5,7 +5,7 @@
 
 ## Contributors 
 
-Please provide citations (e.g., arxiv link, blog post, github repo, etc). 
+Please provide citations (e.g., arxiv link, blog post, github repo, etc). Any info on the hyperparameter search process taken in the original work (if available) is a bonus.
 
 Example contribution: 
 
