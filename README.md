@@ -2,7 +2,7 @@
 
 ## Contributors 
 
-Please provide citations (e.g., arxiv link, blog post, github repo, etc). Any info on the hyperparameter search process taken in the original work (if available) is a bonus.
+Please provide citations (e.g., arxiv link, blog post, github repo, etc). Any info on the hyperparameter search process taken in the original work (if available) is a bonus. Please use scientific "e" notation (10e5 instead of 1000000).
 
 Example contribution: 
 
@@ -19,7 +19,7 @@ Example contribution:
 | discount factor | 0.99 |
 | epsilon(-greedy) | 1 annealed to 0.1 over 1 million frames |
 | minibatch size | 32 |
-| replay memory size | 1000000 |
+| replay memory size | 10e5 |
 | weight init | Xavier (Torch default) |
 
 ## Computer Vision
@@ -55,15 +55,15 @@ In the paper, the actor and critic learning rates are reversed. However, to help
 
 | hyperparam name | default value |
 | --- | --- |
-| actor lr | 10-4 |
-| critic lr | 10-3 |
-| critic L2 weight decay | 10-2 |
+| actor lr | 10e-4 |
+| critic lr | 10e-3 |
+| critic L2 weight decay | 10e-2 |
 | discount factor | 0.99 |
-| target network update tau | 0.001 |
+| target network update tau | 10e-4 |
 | Ornstein-Uhlenbeck theta | 0.15 |
 | Ornstein-Uhlenbeck sigma | 0.3 |
 | minibatch size | 64 on low-dim input, 16 on pixel-input | 
-| replay memory size | 1000000 |
+| replay memory size | 10e5 |
 | weight init | final layer of actor & critic are uniform(-3 * 10-3, 3 * 10-3) for low-dim input and uniform(-3 * 10-4, 3 * 10-4) for pixel-input; other layers -> Xavier |
 
 ### A3C
