@@ -24,6 +24,25 @@ Example contribution:
 
 ## Computer Vision
 
+### DCGAN
+
+* [paper](https://arxiv.org/abs/1511.06434)
+* [ganhacks from "How To Train a GAN" at NIPS 2016](https://github.com/soumith/ganhacks)
+
+| hyperparam name | default value |
+| --- | --- |
+| ADAM lr | 2e-4 |
+| ADAM momentum beta1 | 0.5 |
+| minibatch size | 64 or 128 |
+| image scaling | [-1, 1] |
+| LeakyReLU slope | 0.2 |
+| Real labels (label smoothing) | 1 -> [0.7, 1.2] |
+| Fake labels (label smoothing | 0 -> [0.0, 0.3] |
+| Weight init | N(0, 0.02) |
+| Z distribution| n-dim uniform or gaussian (e.g., uniform (-0.2, 0.2) from [this](https://github.com/carpedm20/DCGAN-tensorflow/blob/master/utils.py#L200) implementation |
+
+For Z, sampling from a uniform distribution is simpler, but see the discussion here about [interpolation in the latent space](https://github.com/soumith/dcgan.torch/issues/14); [current recommendation](https://github.com/soumith/ganhacks#3-use-a-spherical-z) is to use a spherical Z and interpolate via a [great circle](https://en.wikipedia.org/wiki/Great_circle)
+
 ## Natural Language Processing 
 
 ## Deep Reinforcement Learning
@@ -45,7 +64,7 @@ In the paper, the actor and critic learning rates are reversed. However, to help
 | Ornstein-Uhlenbeck sigma | 0.3 |
 | minibatch size | 64 on low-dim input, 16 on pixel-input | 
 | replay memory size | 1000000 |
-| weight init | final layer of actor & critic are uniform(-3 * 10-3, 3 * 10-3) for low-dim input and uniform(-3 * 10-4, 3 * 10-4) for pixel-input; other layers => Xavier |
+| weight init | final layer of actor & critic are uniform(-3 * 10-3, 3 * 10-3) for low-dim input and uniform(-3 * 10-4, 3 * 10-4) for pixel-input; other layers -> Xavier |
 
 ### A3C
 
