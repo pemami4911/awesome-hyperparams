@@ -1,5 +1,7 @@
 # Awesome Hyperparams
 
+These hyperparams should provide generally good starting points. Please check the original paper/code/etc (esp. in Deep RL) as the hyperparams for a specific model can vary based on your task or environment. 
+
 ## Contributors 
 
 Please provide citations (e.g., arxiv link, blog post, github repo, etc). Any info on the hyperparameter search process taken in the original work (if available) is a bonus. Please use scientific "e" notation (10e5 instead of 1000000).
@@ -47,14 +49,19 @@ For Z, sampling from a uniform distribution is simpler, but see the discussion h
 
 ## Deep Reinforcement Learning
 
+See the [OpenAI baselines](https://github.com/openai/baselines) repo for solid implementations of many of these algorithms
+
 ### Deep Deterministic Policy Gradient
 
 * [paper](https://arxiv.org/pdf/1509.02971v2.pdf)
+* [hyperparam analysis](https://arxiv.org/pdf/1709.06560v1.pdf)
 
 In the paper, the actor and critic learning rates are reversed. However, to help stabilize the actor network during training, you generally want to encourage the critic network to converge faster; hence the larger initial lr for the critic is suggested here.
 
 | hyperparam name | default value |
 | --- | --- |
+| policy network | 400/64 -> relu -> 300/64 -> relu -> tanh | 
+| critic network |  400/64 -> relu -> 300/64 -> relu -> linear |
 | actor lr | 10e-4 |
 | critic lr | 10e-3 |
 | critic L2 weight decay | 10e-2 |
@@ -83,6 +90,51 @@ In the paper, the actor and critic learning rates are reversed. However, to help
 | Weight init | Xavier (Torch default) |
 | Reward clipping | [-1, 1] on Atari |
 | # of threads w/ best performance | 16 |
+
+### TRPO
+
+* [paper](https://people.eecs.berkeley.edu/~pabbeel/papers/2015-ICML-TRPO.pdf)
+* [hyperparam analysis](https://arxiv.org/pdf/1709.06560v1.pdf)
+    * TRPO appears to be quite robust to variations in the sizes of hidden layers
+
+| hyperparam name | default value |
+| --- | --- |
+| policy network | 400/64 -> tanh -> 300/64 -> tanh -> linear, + std dev | 
+| value network |  400/64 -> tanh -> 300/64 -> tanh -> linear |
+| timesteps per batch | 5000 |
+| max KL | 0.01 |
+| conjugate gradient iters | 20 |
+| conjugate gradient damping | 0.1 |
+| value function (VF) iters | 3-5 |
+| VF batch size | 64 |
+| vf step size | 1e-3 |
+| vf optimizer | Adam | 
+| discount | 0.995 |
+| entropy coeff | 0.0 |
+| GAE lambda | 0.97 |
+
+### PPO
+
+* [paper](https://arxiv.org/abs/1707.06347)
+    * More hyperparams are reported in the appendix
+* [hyperparam analysis](https://arxiv.org/pdf/1709.06560v1.pdf)
+* reported below are hyperparams for the Mujoco environment
+
+| hyperparam name | default value |
+| --- | --- |
+| policy network | 64 -> tanh -> 64 -> tanh -> linear, + std dev | 
+| value network |  64 -> tanh -> 64 -> tanh -> linear |
+| timesteps per batch | 2048 |
+| clip param | 0.2 |
+| optimizer | Adam |
+| optimizer epochs per iter | 10 |
+| optimizer step size | 3e-4 |
+| optimizer batch size | 64 |
+| lr schedule | linear |
+| discount | 0.995 |
+| entropy coeff | 0.0 |
+| GAE lambda | 0.97 |
+
 
 ## General
 
