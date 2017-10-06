@@ -56,7 +56,7 @@ See the [OpenAI baselines](https://github.com/openai/baselines) repo for solid i
 * [paper](https://arxiv.org/pdf/1509.02971v2.pdf)
 * [hyperparam analysis](https://arxiv.org/pdf/1709.06560v1.pdf)
 
-In the paper, the actor and critic learning rates are reversed. However, to help stabilize the actor network during training, you generally want to encourage the critic network to converge faster; hence the larger initial lr for the critic is suggested here.
+In the original paper, the actor and critic learning rates are reversed. However, to help stabilize the actor network during training, you generally want to encourage the critic network to converge faster; hence the larger initial lr for the critic is suggested here.
 
 | hyperparam name | default value |
 | --- | --- |
@@ -105,10 +105,10 @@ In the paper, the actor and critic learning rates are reversed. However, to help
 | max KL | 0.01 |
 | conjugate gradient iters | 20 |
 | conjugate gradient damping | 0.1 |
-| value function (VF) iters | 3-5 |
+| value function (VF) optimizer | Adam |
+| VF iters | 3-5 | 
 | VF batch size | 64 |
-| vf step size | 1e-3 |
-| vf optimizer | Adam | 
+| VF step size | 1e-3 |
 | discount | 0.995 |
 | entropy coeff | 0.0 |
 | GAE lambda | 0.97 |
